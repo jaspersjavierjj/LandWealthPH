@@ -1,0 +1,409 @@
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, Helvetica, sans-serif;
+}
+
+/* NAVBAR */
+
+.navbar{
+position:absolute;
+
+/* start hidden above screen */
+top:-120px;
+
+left:0px;
+width:100%;
+height:80px;
+padding-left: 60px;
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+padding:0 70px;
+
+z-index:1000;
+color:white;
+
+/* smooth slide */
+transition: top 3.2s cubic-bezier(.19,1,.22,1);
+}
+
+/* NAVBAR FINAL POSITION */
+
+.navbar.show-navbar{
+top:5px;
+}
+
+/* LEFT LOGO */
+
+.logo{
+font-size:18px;
+font-weight:700;
+letter-spacing:2px;
+text-transform:uppercase;
+}
+
+/* LEFT LOGO */
+
+.logo img{
+height:100px;
+width:auto;
+display:block;
+margin-top: 40px;
+}
+
+/* RIGHT SIDE */
+
+.nav-right{
+display:flex;
+align-items:center;
+gap:40px;
+}
+
+/* PHONE */
+
+.phone{
+display:flex;
+align-items:center;
+gap:8px;
+font-size:16px;
+letter-spacing:1px;
+font-weight:600;
+}
+
+.phone .material-icons{
+font-size:18px;
+}
+
+/* MENU */
+
+.menu{
+display:flex;
+align-items:center;
+gap:6px;
+cursor:pointer;
+font-size:16px;
+letter-spacing:2px;
+margin-right: 180px;
+font-weight:600;
+}
+
+.menu .material-icons{
+font-size:25px;
+}
+
+/* VIDEO BACKGROUND */
+#background-video{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+object-fit:cover;
+z-index:-1;
+}
+
+/* PAGE 1 - FIXED HERO SECTION */
+.page1 {
+height:100vh;
+position:relative;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+}
+/* LOCATION TEXT */
+#locationText{
+    position:absolute;
+    left:170px;
+    top:100px;          
+    font-size:15px;
+    color:white;
+    font-weight:600;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    opacity: 0;
+    transition: 
+        top 3.2s cubic-bezier(.19,1,.22,1),
+        opacity 3.2s cubic-bezier(.19,1,.22,1);
+    text-shadow:
+        0px 3px 8px rgba(117,117,117,0.45),
+        0px 1px 4px rgba(197,197,197,0.35);
+}
+
+#locationText.final-position{
+    top:230px;          
+    opacity: 1;
+}
+
+/* TITLE WRAPPER - ALL ORIGINAL */
+.title-wrapper{
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%, -50%);
+color:white;
+text-align:center;
+will-change: transform;
+transition:transform 3.2s cubic-bezier(.19,1,.22,1);
+}
+
+/* TITLE - ALL ORIGINAL */
+#mainTitle{
+font-size:80px;
+font-weight:900;
+letter-spacing:3px;
+display:flex;
+justify-content:center;
+gap:10px;
+transition:font-size 3.2s cubic-bezier(.19,1,.22,1);
+text-shadow:
+0px 4px 10px rgba(117,117,117,0.45),
+0px 2px 5px rgba(197,197,197,0.35);
+}
+
+/* EACH WORD - ALL ORIGINAL */
+.word{
+display:inline-block;
+will-change: transform;
+transition:transform 3.2s cubic-bezier(.19,1,.22,1);
+}
+
+/* SUBTITLE - ALL ORIGINAL */
+#subtitle{
+font-size:20px;
+letter-spacing:5px;
+font-weight: 700;
+margin-top:-10px;
+transition:
+transform 3.2s cubic-bezier(.19,1,.22,1),
+font-size 3.2s cubic-bezier(.19,1,.22,1);
+text-shadow:
+0px 3px 8px rgba(117,117,117,0.45),
+0px 1px 4px rgba(197,197,197,0.35);
+}
+
+/* LEFT MODE - ALL ORIGINAL */
+.left-mode{
+transform:translate(-45vw, -35vh);
+text-align:left;
+}
+
+/* TITLE GROWS - ALL ORIGINAL */
+.left-mode #mainTitle{
+font-size:120px;
+flex-direction:column;
+align-items:flex-start;
+gap:0;
+margin-left: 80px;
+line-height:0.9;
+margin-top:110px;
+}
+
+/* WORD MICRO MOTION - ALL ORIGINAL */
+.left-mode .word:nth-child(1){transform:translateX(-15px);}
+.left-mode .word:nth-child(2){transform:translateX(0px);}
+.left-mode .word:nth-child(3){transform:translateX(15px);}
+
+/* SUBTITLE MOVES BOTTOM LEFT - ALL ORIGINAL */
+.left-mode #subtitle{
+position:absolute;
+left:80px;
+top:700px;
+font-size:13px;
+transform:none;
+font-weight: 600;
+}
+
+/* HERO BUTTON CONTAINER */
+
+.hero-buttons{
+position:absolute;
+left:80px;
+top:460px;   /* below LAND WEALTH PH */
+
+display:flex;
+gap:25px;
+
+opacity:0;
+transform:translateY(40px);
+
+transition:
+opacity 1.5s ease,
+transform 1.5s ease;
+}
+
+/* SHOW BUTTONS */
+
+.hero-buttons.show-buttons{
+opacity:1;
+transform:translateY(0);
+}
+
+/* BASE BUTTON */
+
+.btn{
+padding:12px 30px;      /* smaller */
+border-radius:35px;     /* smoother pill shape */
+font-size:14px;         /* smaller text */
+font-weight:600;
+letter-spacing:0.5px;
+text-decoration:none;
+display:inline-block;
+transition:all .35s ease;
+}
+
+/* WHITE BUTTON */
+
+.btn-primary{
+background:white;
+color:black;
+}
+
+/* OUTLINE BUTTON */
+
+.btn-outline{
+background:transparent;
+color:white;
+border:2px solid white;   /* thinner border */
+}
+
+/* HOVER EFFECT */
+
+.btn:hover{
+transform:translateY(-2px);
+}
+
+/* PAGE 2 */
+
+.page2{
+background:#f6f6f6;
+  min-height: 100vh;
+  padding: 80px 100px;
+  display: flex;
+  align-items: center;
+
+}
+
+/* CONTAINER */
+
+.page2-container{
+max-width:1400px;
+margin:auto;
+}
+
+/* TOP SECTION */
+
+.page2-top{
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:80px;
+margin-bottom:80px;
+}
+
+/* TEXT */
+
+.page2-text{
+max-width:520px;
+}
+
+.category{
+font-size:13px;
+color:#27b083;
+font-weight:600;
+letter-spacing:1px;
+display:block;
+margin-bottom:10px;
+}
+
+.page2-text h2{
+font-size:42px;
+line-height:1.2;
+margin-bottom:15px;
+color:#222;
+}
+
+.page2-text p{
+color:#666;
+font-size:16px;
+margin-bottom:25px;
+}
+
+/* BUTTON */
+
+.view-properties{
+display:inline-block;
+background:#27b083;
+color:white;
+padding:12px 25px;
+border-radius:25px;
+text-decoration:none;
+font-size:14px;
+}
+
+/* FEATURED IMAGE */
+
+.page2-featured img{
+width:500px;
+border-radius:18px;
+display:block;
+}
+
+/* PROPERTY GRID */
+
+.property-grid{
+display:grid;
+grid-template-columns:2fr 1fr 1fr;
+gap:30px;
+}
+
+/* PROPERTY CARD */
+
+.property-card{
+position:relative;
+overflow:hidden;
+border-radius:18px;
+}
+
+.property-card img{
+width:100%;
+height:100%;
+object-fit:cover;
+display:block;
+}
+
+/* LARGE CARD */
+
+.property-card.large{
+height:260px;
+}
+
+/* SMALL CARDS */
+
+.property-card:not(.large){
+height:260px;
+}
+
+/* CARD OVERLAY */
+
+.card-overlay{
+position:absolute;
+bottom:20px;
+left:20px;
+color:white;
+}
+
+.card-overlay h3{
+font-size:22px;
+margin-bottom:5px;
+}
+
+.card-overlay p{
+font-size:13px;
+opacity:0.9;
+max-width:260px;
+}
