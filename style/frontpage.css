@@ -48,11 +48,25 @@ text-transform:uppercase;
 
 /* LEFT LOGO */
 
+/* LOGO IMAGE */
+
 .logo img{
 height:100px;
 width:auto;
 display:block;
 margin-top: 40px;
+margin-left: 140px;
+
+/* smooth transition */
+transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+/* HOVER EFFECT - brighten */
+
+.logo img:hover{
+filter: brightness(1.3);
+transform: scale(1.03); /* slight zoom for premium feel */
+cursor: pointer;
 }
 
 /* RIGHT SIDE */
@@ -118,7 +132,7 @@ text-align:center;
 /* LOCATION TEXT */
 #locationText{
     position:absolute;
-    left:170px;
+    left:240px;
     top:100px;          
     font-size:15px;
     color:white;
@@ -198,7 +212,7 @@ font-size:120px;
 flex-direction:column;
 align-items:flex-start;
 gap:0;
-margin-left: 80px;
+margin-left: 160px;
 line-height:0.9;
 margin-top:110px;
 }
@@ -211,7 +225,7 @@ margin-top:110px;
 /* SUBTITLE MOVES BOTTOM LEFT - ALL ORIGINAL */
 .left-mode #subtitle{
 position:absolute;
-left:80px;
+margin-left: 160px;
 top:700px;
 font-size:13px;
 transform:none;
@@ -261,6 +275,7 @@ transition:all .35s ease;
 .btn-primary{
 background:white;
 color:black;
+margin-left: 100px;
 }
 
 /* OUTLINE BUTTON */
@@ -302,7 +317,7 @@ display:flex;
 justify-content:space-between;
 align-items:center;
 gap:80px;
-margin-bottom:80px;
+margin-bottom:30px;
 }
 
 /* TEXT */
@@ -333,6 +348,19 @@ font-size:16px;
 margin-bottom:25px;
 }
 
+/* SCROLL REVEAL (INITIAL STATE) */
+
+.page2-text{
+opacity: 0;
+transform: translateY(100px) scale(0.98);
+transition: all 1.2s cubic-bezier(.19,1,.22,1);
+}
+
+.page2-text.show{
+opacity: 1;
+transform: translateY(0) scale(1);
+}
+
 /* BUTTON */
 
 .view-properties{
@@ -348,9 +376,15 @@ font-size:14px;
 /* FEATURED IMAGE */
 
 .page2-featured img{
-width:500px;
+width: 700px;
+height: 350px;
 border-radius:18px;
 display:block;
+object-fit:cover;
+}
+
+.page2-featured img{
+    max-width: 700px;
 }
 
 /* PROPERTY GRID */
@@ -379,13 +413,13 @@ display:block;
 /* LARGE CARD */
 
 .property-card.large{
-height:260px;
+height:350px;
 }
 
 /* SMALL CARDS */
 
 .property-card:not(.large){
-height:260px;
+height:350px;
 }
 
 /* CARD OVERLAY */
@@ -406,4 +440,173 @@ margin-bottom:5px;
 font-size:13px;
 opacity:0.9;
 max-width:260px;
+}
+
+/* FEATURED IMAGE REVEAL */
+
+.page2-featured{
+opacity: 0;
+transform: translateY(100px) scale(0.98);
+transition: all 1.2s cubic-bezier(.19,1,.22,1);
+}
+
+.page2-featured.show{
+opacity: 1;
+transform: translateY(0) scale(1);
+}
+
+/* PROPERTY CARDS REVEAL */
+
+.property-card{
+opacity: 0;
+transform: translateY(100px);
+transition: all 1s cubic-bezier(.19,1,.22,1);
+}
+
+.property-card.show{
+opacity: 1;
+transform: translateY(0);
+}
+
+/* PAGE 3 */
+
+.page3{
+background:#f6f6f6;
+padding:100px 80px;
+}
+
+/* HEADER */
+
+.page3-header{
+text-align:center;
+margin-bottom:60px;
+}
+
+.page3-category{
+font-size:13px;
+color:#27b083;
+font-weight:600;
+display:block;
+margin-bottom:10px;
+}
+
+.page3-header h2{
+font-size:36px;
+color:#222;
+margin-bottom:10px;
+}
+
+.page3-header p{
+color:#777;
+font-size:14px;
+}
+
+/* GRID */
+
+.page3-grid{
+display:grid;
+grid-template-columns:repeat(3, 1fr);
+gap:30px;
+}
+
+/* CARD */
+
+.property-box{
+background:white;
+border-radius:16px;
+overflow:hidden;
+box-shadow:0 4px 15px rgba(0,0,0,0.05);
+}
+
+/* IMAGE */
+
+.img-wrapper{
+position:relative;
+}
+
+.img-wrapper img{
+width:100%;
+height:200px;
+object-fit:cover;
+display:block;
+}
+
+/* HOVER ARROW */
+
+.arrow{
+position:absolute;
+top:15px;
+right:15px;
+background:white;
+border-radius:50%;
+width:40px;
+height:40px;
+display:flex;
+align-items:center;
+justify-content:center;
+
+opacity:0;
+transform:scale(0.8);
+transition:all .3s ease;
+}
+
+.property-box:hover .arrow{
+opacity:1;
+transform:scale(1);
+}
+
+/* INFO */
+
+.property-info{
+padding:15px;
+}
+
+/* TITLE + PRICE */
+
+.title-price{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:5px;
+}
+
+.title-price h3{
+font-size:15px;
+color:#222;
+}
+
+.price{
+background:#d9f5ec;
+color:#27b083;
+padding:5px 10px;
+border-radius:15px;
+font-size:12px;
+font-weight:600;
+}
+
+/* LOCATION */
+
+.location{
+font-size:12px;
+color:#888;
+margin-bottom:10px;
+}
+
+/* FEATURES */
+
+.features{
+display:flex;
+justify-content:space-between;
+font-size:12px;
+color:#444;
+}
+
+.features span{
+display:flex;
+align-items:center;
+gap:5px;
+}
+
+.features .material-icons{
+font-size:14px;
 }
