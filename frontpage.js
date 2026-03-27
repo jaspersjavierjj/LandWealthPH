@@ -74,3 +74,76 @@ const observer = new IntersectionObserver((entries) => {
 });
 
 observer.observe(page2);
+
+// SLIDER LOGIC
+
+let currentSlide = 0;
+
+const slider = document.getElementById("sliderWrapper");
+const slides = document.querySelectorAll(".slide");
+const dots = document.querySelectorAll(".dot");
+
+let autoSlide;
+
+// UPDATE FUNCTION
+function updateSlider(){
+    slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+
+    // update dots
+    dots.forEach(dot => dot.classList.remove("active"));
+    dots[currentSlide].classList.add("active");
+}
+
+// NEXT
+function nextSlide(){
+    currentSlide++;
+    if(currentSlide >= slides.length){
+        currentSlide = 0;
+    }
+    updateSlider();
+}
+
+// PREV
+function prevSlide(){
+    currentSlide--;
+    if(currentSlide < 0){
+        currentSlide = slides.length - 1;
+    }
+    updateSlider();
+}
+
+// BUTTON EVENTS
+document.getElementById("nextBtn").addEventListener("click", () => {
+    nextSlide();
+    resetAutoSlide();
+});
+
+document.getElementById("prevBtn").addEventListener("click", () => {
+    prevSlide();
+    resetAutoSlide();
+});
+
+// DOT CLICK
+dots.forEach((dot, index) => {
+    dot.addEventListener("click", () => {
+        currentSlide = index;
+        updateSlider();
+        resetAutoSlide();
+    });
+});
+
+// AUTO SLIDE
+function startAutoSlide(){
+    autoSlide = setInterval(() => {
+        nextSlide();
+    }, 4000); // 4 seconds
+}
+
+// RESET TIMER WHEN USER INTERACTS
+function resetAutoSlide(){
+    clearInterval(autoSlide);
+    startAutoSlide();
+}
+
+// INIT
+startAutoSlide();
