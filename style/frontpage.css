@@ -642,7 +642,7 @@ margin:auto;
 
 .page4-slider{
 position:relative;
-width:50%;
+width:40%;
 overflow:hidden;
 border-radius:20px;
 }
@@ -655,7 +655,7 @@ border-radius:20px;
 .slide{
 width:100%;
 flex-shrink:0;
-height:400px;
+height:600px;
 object-fit:cover;
 }
 
