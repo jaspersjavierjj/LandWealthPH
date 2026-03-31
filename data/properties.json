@@ -1,0 +1,62 @@
+[
+  {
+    "title": "Serenity height villas",
+    "location": "15 s aurora ave, miami",
+    "price": "$570,000",
+    "image": "assets/house1.jpg",
+    "bed": 4,
+    "bath": 3,
+    "size": "120m²",
+    "order": 1
+  },
+  {
+    "title": "Mountain retreat villa",
+    "location": "18 s aurora ave, miami",
+    "price": "$575,000",
+    "image": "assets/house2.jpg",
+    "bed": 5,
+    "bath": 2,
+    "size": "150m²",
+    "order": 2
+  },
+  {
+    "title": "Modern luxe villa",
+    "location": "20 s aurora ave, miami",
+    "price": "$580,000",
+    "image": "assets/house3.jpg",
+    "bed": 3,
+    "bath": 4,
+    "size": "180m²",
+    "order": 3
+  },
+  {
+    "title": "Royal orchid villas",
+    "location": "12 emerald heights, los angeles",
+    "price": "$590,000",
+    "image": "assets/house4.jpg",
+    "bed": 6,
+    "bath": 3,
+    "size": "200m²",
+    "order": 4
+  },
+  {
+    "title": "Grand vista villas",
+    "location": "25 skyview boulevard, san diego",
+    "price": "$710,000",
+    "image": "assets/house5.jpg",
+    "bed": 2,
+    "bath": 1,
+    "size": "90m²",
+    "order": 5
+  },
+  {
+    "title": "Imperial pearl villas",
+    "location": "18 sapphire bay road, naples",
+    "price": "$630,000",
+    "image": "assets/house6.jpg",
+    "bed": 4,
+    "bath": 2,
+    "size": "130m²",
+    "order": 6
+  }
+]

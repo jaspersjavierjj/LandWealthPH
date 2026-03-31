@@ -70,6 +70,47 @@ const observer = new IntersectionObserver(
 
 observer.observe(page2);
 
+// LOAD PAGE 3 DATA
+fetch("data/properties.json")
+  .then((res) => res.json())
+  .then((data) => {
+    const grid = document.getElementById("page3Grid");
+
+    data.sort((a, b) => a.order - b.order);
+    data.forEach((item) => {
+      const card = document.createElement("div");
+      card.classList.add("property-box");
+
+      card.innerHTML = `
+        <div class="img-wrapper">
+          <img src="${item.image}">
+
+          <div class="arrow">
+            <span class="material-icons">arrow_forward</span>
+          </div>
+        </div>
+
+        <div class="property-info">
+          <div class="title-price">
+            <h3>${item.title}</h3>
+            <span class="price">${item.price}</span>
+          </div>
+
+          <p class="location">${item.location}</p>
+
+          <div class="features">
+            <span><span class="material-icons">bed</span> ${item.bed} Bedrooms</span>
+            <span><span class="material-icons">bathtub</span> ${item.bath} Bathrooms</span>
+            <span><span class="material-icons">square_foot</span> ${item.size}</span>
+          </div>
+        </div>
+      `;
+
+      grid.appendChild(card);
+    });
+  })
+  .catch((err) => console.error("Error loading properties:", err));
+
 // SLIDER LOGIC
 
 let currentSlide = 0;
