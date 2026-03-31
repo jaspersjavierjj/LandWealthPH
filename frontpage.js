@@ -1,7 +1,5 @@
 window.addEventListener("load", () => {
-
-setTimeout(() => {
-
+  setTimeout(() => {
     // LAND animation
     document.getElementById("titleWrapper").classList.add("left-mode");
 
@@ -10,68 +8,65 @@ setTimeout(() => {
 
     // navbar slide down
     document.querySelector(".navbar").classList.add("show-navbar");
+  }, 2000);
 
-}, 2000);
+  /* SHOW BUTTONS AFTER TITLE FINISHES */
 
-
-/* SHOW BUTTONS AFTER TITLE FINISHES */
-
-setTimeout(() => {
-
+  setTimeout(() => {
     document.getElementById("heroButtons").classList.add("show-buttons");
-
-}, 3500);
-
+  }, 3500);
 });
 
 const page2 = document.querySelector(".page2");
 
 let hasAnimated = false;
 
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
+const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting && !hasAnimated) {
+        hasAnimated = true; // prevents instant re-trigger
 
-        if (entry.isIntersecting && !hasAnimated) {
+        // 1️⃣ TEXT
+        const text = document.querySelector(".page2-text");
+        text.classList.add("show");
 
-            hasAnimated = true; // prevents instant re-trigger
+        // 2️⃣ FEATURED IMAGE
+        setTimeout(() => {
+          document.querySelector(".page2-featured").classList.add("show");
+        }, 500);
 
-            // 1️⃣ TEXT
-            const text = document.querySelector(".page2-text");
-            text.classList.add("show");
+        // 3️⃣ PROPERTY CARDS (STAGGER)
+        const cards = document.querySelectorAll(".property-card");
 
-            // 2️⃣ FEATURED IMAGE
-            setTimeout(() => {
-                document.querySelector(".page2-featured")
-                    .classList.add("show");
-            }, 500);
+        cards.forEach((card, index) => {
+          setTimeout(
+            () => {
+              card.classList.add("show");
+            },
+            1000 + index * 400,
+          );
+          // starts AFTER image, then 1s interval each
+        });
+      }
 
-            // 3️⃣ PROPERTY CARDS (STAGGER)
-            const cards = document.querySelectorAll(".property-card");
+      // RESET when scrolling back up
+      if (!entry.isIntersecting) {
+        hasAnimated = false;
 
-            cards.forEach((card, index) => {
-                setTimeout(() => {
-                    card.classList.add("show");
-                }, 1000 + (index * 400)); 
-                // starts AFTER image, then 1s interval each
-            });
+        document.querySelector(".page2-text").classList.remove("show");
+        document.querySelector(".page2-featured").classList.remove("show");
 
-        }
-
-        // RESET when scrolling back up
-        if (!entry.isIntersecting) {
-            hasAnimated = false;
-
-            document.querySelector(".page2-text").classList.remove("show");
-            document.querySelector(".page2-featured").classList.remove("show");
-
-            document.querySelectorAll(".property-card")
-                .forEach(card => card.classList.remove("show"));
-        }
-
+        document
+          .querySelectorAll(".property-card")
+          .forEach((card) => card.classList.remove("show"));
+      }
     });
-}, {
-    threshold: 0.2
-});
+  },
+  {
+    threshold: 0.2,
+  },
+);
 
 observer.observe(page2);
 
@@ -86,63 +81,63 @@ const dots = document.querySelectorAll(".dot");
 let autoSlide;
 
 // UPDATE FUNCTION
-function updateSlider(){
-    slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+function updateSlider() {
+  slider.style.transform = `translateX(-${currentSlide * 100}%)`;
 
-    // update dots
-    dots.forEach(dot => dot.classList.remove("active"));
-    dots[currentSlide].classList.add("active");
+  // update dots
+  dots.forEach((dot) => dot.classList.remove("active"));
+  dots[currentSlide].classList.add("active");
 }
 
 // NEXT
-function nextSlide(){
-    currentSlide++;
-    if(currentSlide >= slides.length){
-        currentSlide = 0;
-    }
-    updateSlider();
+function nextSlide() {
+  currentSlide++;
+  if (currentSlide >= slides.length) {
+    currentSlide = 0;
+  }
+  updateSlider();
 }
 
 // PREV
-function prevSlide(){
-    currentSlide--;
-    if(currentSlide < 0){
-        currentSlide = slides.length - 1;
-    }
-    updateSlider();
+function prevSlide() {
+  currentSlide--;
+  if (currentSlide < 0) {
+    currentSlide = slides.length - 1;
+  }
+  updateSlider();
 }
 
 // BUTTON EVENTS
 document.getElementById("nextBtn").addEventListener("click", () => {
-    nextSlide();
-    resetAutoSlide();
+  nextSlide();
+  resetAutoSlide();
 });
 
 document.getElementById("prevBtn").addEventListener("click", () => {
-    prevSlide();
-    resetAutoSlide();
+  prevSlide();
+  resetAutoSlide();
 });
 
 // DOT CLICK
 dots.forEach((dot, index) => {
-    dot.addEventListener("click", () => {
-        currentSlide = index;
-        updateSlider();
-        resetAutoSlide();
-    });
+  dot.addEventListener("click", () => {
+    currentSlide = index;
+    updateSlider();
+    resetAutoSlide();
+  });
 });
 
 // AUTO SLIDE
-function startAutoSlide(){
-    autoSlide = setInterval(() => {
-        nextSlide();
-    }, 4000); // 4 seconds
+function startAutoSlide() {
+  autoSlide = setInterval(() => {
+    nextSlide();
+  }, 4000); // 4 seconds
 }
 
 // RESET TIMER WHEN USER INTERACTS
-function resetAutoSlide(){
-    clearInterval(autoSlide);
-    startAutoSlide();
+function resetAutoSlide() {
+  clearInterval(autoSlide);
+  startAutoSlide();
 }
 
 // INIT
